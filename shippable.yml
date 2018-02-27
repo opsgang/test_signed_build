@@ -12,7 +12,7 @@ build:
       echo -e "$OPSGANG_GPG_PRIVATE_KEY" > $gpgk ;
       gpg --batch --import $gpgk ;
       gpg --batch --import gpg-signing.pub ;
-      echo "$p"| gpg --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
+      echo "$p"| gpg --no-tty --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
       cat fetch.tgz.asc
 
 integrations:
