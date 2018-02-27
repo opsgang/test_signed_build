@@ -19,4 +19,4 @@ integrations:
       on_failure: never
       on_pull_request: never
   generic:
-    - integrationName: opsgang_gpg_passphrase
+    - integrationName: opsgang_gpg
