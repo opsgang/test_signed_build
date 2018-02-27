@@ -8,8 +8,9 @@ build:
 
   ci:
     - sudo apt-get update && sudo apt-get install -y coreutils realpath gnupg;
-      p=$OPSGANG_GPG_PASSPHRASE;
-      echo -e "$OPSGANG_GPG_PRIVATE_KEY" > gpg-signing.key ; head -n 3 gpg-signing.key ; tail -n 3 gpg-signing.key
+      gpgk="gpg-signing.key" p="$OPSGANG_GPG_PASSPHRASE";
+      echo -e "$OPSGANG_GPG_PRIVATE_KEY" > $gpgk ;
+      gpg --batch --import $gpgk ; gpg --list-keys ; gpg --list-secret-keys ;
 
 integrations:
   notifications:
