@@ -14,7 +14,7 @@ language: none
 build:
 
   ci:
-    - sudo apt-get update && sudo apt-get install tree && tree /tmp/ssh
+    - export
 
 integrations:
   notifications:
@@ -25,5 +25,5 @@ integrations:
       on_failure: never
       on_pull_request: never
   key:
-    - integrationName: invalid_keys
-      type: sshKey
+    - integrationName: gpg_as_pem
+      type: pemKey
