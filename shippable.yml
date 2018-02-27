@@ -14,7 +14,7 @@ language: none
 build:
 
   ci:
-    - export
+    - echo "var: $GPG_AS_PEM_NAME file: $GPG_AS_PEM_KEYPATH"
 
 integrations:
   notifications:
