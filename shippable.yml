@@ -11,7 +11,7 @@ build:
       gpgk="gpg-signing.key" p="$OPSGANG_GPG_PASSPHRASE";
       echo -e "$OPSGANG_GPG_PRIVATE_KEY" > $gpgk ;
       gpg --batch --import $gpgk ;
-      gpg --batch --import gpg-siging.pub ;
+      gpg --batch --import gpg-signing.pub ;
       echo "$p"| gpg --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
       cat fetch.tgz.asc
 
