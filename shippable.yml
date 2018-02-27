@@ -20,6 +20,3 @@ integrations:
       on_pull_request: never
   generic:
     - integrationName: opsgang_gpg_passphrase
-  key:
-    - integrationName: opsgangbot_gpg_private_key
-      type: pemKey
