@@ -13,7 +13,7 @@ build:
       gpg --batch --import $gpgk ;
       gpg --batch --import gpg-signing.pub ;
       echo "$p"| gpg --no-tty --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
-      cat fetch.tgz.asc
+      gpg --verify fetch.tgz.asc fetch.tgz ;
 
 integrations:
   notifications:
