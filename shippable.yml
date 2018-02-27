@@ -2,19 +2,18 @@
 #
 # Set to only build on git tag events and pull requests
 # in shippable console.
-#    - sudo apt-get update && sudo apt-get install -y coreutils realpath gnupg;
-#      gpgk="gpg-signing.key" p="$OPSGANG_GPG_PASSPHRASE";
-#      echo -e "$OPSGANG_GPG_PRIVATE_KEY" > $gpgk ;
-#      gpg --batch --import $gpgk ;
-#      gpg --batch --import gpg-signing.pub ;
-#      echo "$p"| gpg --no-tty --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
-#      gpg --verify fetch.tgz.asc fetch.tgz ;
 language: none
 
 build:
 
   ci:
-    - echo "var $GPG_AS_PEM_NAME file $GPG_AS_PEM_KEYPATH"
+    - sudo apt-get update && sudo apt-get install -y coreutils realpath gnupg;
+      gpgk="gpg-signing.key" p="$OPSGANG_GPG_PASSPHRASE";
+      echo -e "$OPSGANG_GPG_PRIVATE_KEY" > $gpgk ;
+      gpg --batch --import $gpgk ;
+      gpg --batch --import gpg-signing.pub ;
+      echo "$p"| gpg --no-tty --armor --detach-sign --passphrase-fd 0 fetch.tgz ;
+      gpg --verify fetch.tgz.asc fetch.tgz ;
 
 integrations:
   notifications:
@@ -24,6 +23,5 @@ integrations:
       on_success: never
       on_failure: never
       on_pull_request: never
-  key:
-    - integrationName: gpg_as_pem
-      type: pemKey
+  generic:
+    - integrationName: opsgang_gpg
